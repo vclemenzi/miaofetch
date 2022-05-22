@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+YELLOW='\033[1;33m'
+RESET='\033[0m'
+
 case "$1" in
     "-s"|"--small")
         echo ""
@@ -12,6 +15,18 @@ case "$1" in
         ;;
 
     *)
-        echo ""
+    // get hostname 
+    hostname=$(hostname)
+    os=$(lsb_release -si)
+    release=$(lsb_release -sr)
+    arch=$(uname -m)
+    kernel=$(uname -r)
+    uptime=$(uptime -p)
+        echo "
+  ${YELLOW}\    /)${RESET}   ${YELLOW}${USER}${RESET}@${YELLOW}${hostname}${RESET}
+   ${YELLOW})  ( ')${RESET}  ${YELLOW}OS${RESET}: $os $release $arch
+  ${YELLOW}(  /  )${RESET}   ${YELLOW}Kernel${RESET}: $kernel
+   ${YELLOW}\(__)|${RESET}   ${YELLOW}Uptime${RESET}: $uptime
+"
         ;;
 esac
