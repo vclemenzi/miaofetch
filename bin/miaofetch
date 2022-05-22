@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+case "$1" in
+    "-s"|"--small")
+        echo ""
+        exit 1
+        ;;
+
+    "-l"|"--large")
+        echo ""
+        exit 1
+        ;;
+
+    *)
+        echo ""
+        ;;
+esac
