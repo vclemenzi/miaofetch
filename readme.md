@@ -1,6 +1,6 @@
 ## Miaofetch, Miao!
 
-Get your system information with an cool cat!
+Fetch your system information, with a nice cat! 
 
 ### Installation
 
