@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+#By Thebigbot0000
+
 
 YELLOW='\033[1;33m'
 GREEN='\033[0;32m'
