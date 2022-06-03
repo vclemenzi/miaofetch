@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+touch /usr/local/bin/miaofetch
+content=$(curl https://raw.githubusercontent.com/Thebigbot0000/miaofetch/main/bin/miaofetch)
+echo "$content" > /usr/local/bin/miaofetch
+chmod +x /usr/local/bin/miaofetch

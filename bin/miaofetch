@@ -1,9 +1,15 @@
 #!/usr/bin/env bash
 
 YELLOW='\033[1;33m'
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+BLUE='\033[0;34m'
+GRAY='\033[1;30m'
+BOLD='\033[1m'
 RESET='\033[0m'
 
 hostname=$(hostname)
+user=$(whoami)
 os=$(lsb_release -si)
 release=$(lsb_release -sr)
 arch=$(uname -m)
@@ -14,21 +20,25 @@ memory_used=$(free -m | awk '/^Mem:/{print $3}')
 
 case "$1" in
 "-nc" | "--no-cat")
- echo "${YELLOW}${USER}${RESET}@${YELLOW}${hostname}${RESET}
+ echo -e "${YELLOW}${user}${RESET}@${YELLOW}${hostname}${RESET}
 ${YELLOW}OS${RESET}: $os $release $arch
 ${YELLOW}Kernel${RESET}: $kernel
 ${YELLOW}Uptime${RESET}: $uptime
-${YELLOW}Memory${RESET}: $memory_used/$memory_total MB"
+${YELLOW}Memory${RESET}: $memory_used/$memory_total MB
+
+${GREEN}████${RESET}${RED}████${RESET}${YELLOW}████${RESET}${BLUE}████${RESET}${GRAY}████${RESET}"
     exit 1
     ;;
 
 *)
-    echo "
+    echo -e "
             ${YELLOW}${USER}${RESET}@${YELLOW}${hostname}${RESET}
-  ${YELLOW}\    /)${RESET}   ${YELLOW}OS${RESET}: $os $release $arch
-   ${YELLOW})  ( ')${RESET}  ${YELLOW}Kernel${RESET}: $kernel
-  ${YELLOW}(  /  )${RESET}   ${YELLOW}Uptime${RESET}: $uptime
-   ${YELLOW}\(__)|${RESET}   ${YELLOW}Memory${RESET}: $memory_used/$memory_total MB
+  ${YELLOW}\    /)${RESET}   ${BOLD}OS${RESET}: $os $release $arch
+   ${YELLOW})  ( ')${RESET}  ${BOLD}Kernel${RESET}: $kernel
+  ${YELLOW}(  /  )${RESET}   ${BOLD}Uptime${RESET}: $uptime
+   ${YELLOW}\(__)|${RESET}   ${BOLD}Memory${RESET}: $memory_used/$memory_total MB
+
+            ${GREEN}████${RESET}${RED}████${RESET}${YELLOW}████${RESET}${BLUE}████${RESET}${GRAY}████${RESET}
 "
     exit 1
     ;;

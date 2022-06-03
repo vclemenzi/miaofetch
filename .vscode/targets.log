@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Jun  2 09:23:31 2022
+# Make data base, printed on Fri Jun  3 18:44:05 2022
 
 # Variables
 
@@ -30,6 +30,8 @@ XDG_SESSION_TYPE = x11
 VSCODE_LOG_NATIVE = false
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
+# environment
+IM_CONFIG_PHASE = 1
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
@@ -43,19 +45,19 @@ CURDIR := /home/valerio/Scrivania/miaofetch
 # makefile
 SHELL = /bin/sh
 # environment
-VTE_VERSION = 6003
-# environment
 VSCODE_NLS_CONFIG = {"locale":"it","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:52496
+_ = /usr/share/code-insiders/code-insiders
+# environment
+JOURNAL_STREAM = 8:60428
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg:/usr/share/kubuntu-default-settings/kf5-settings
-# makefile (from 'Makefile', line 1)
-MAKEFILE_LIST :=  Makefile
+# environment
+STARSHIP_SESSION_KEY = 1715224734165192
 # automatic
 @F = $(notdir $@)
 # environment
-IM_CONFIG_PHASE = 1
+GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code-insiders.desktop
 # environment
 USERNAME = valerio
 # environment
@@ -67,25 +69,25 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-_ = /usr/bin/code-insiders
+MANAGERPID = 2175
 # environment
-MANAGERPID = 2186
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-569bedf1-b0a9-490a-99cd-67b00e16b712.sock
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-84ef2b99-cf59-4338-80b1-92f95b1e5ed4.sock
-# environment
-VSCODE_CWD = /home/valerio/Scrivania/miaofetch
+VSCODE_CWD = /home/valerio
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /home/valerio/.local/share/pnpm:/home/valerio/.local/bin:/home/valerio/.local/share/pnpm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+PATH = /home/valerio/.local/bin:/home/valerio/.local/share/pnpm:/home/valerio/.local/bin:/home/valerio/.local/share/pnpm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/thebigbot:@/tmp/.ICE-unix/2547,unix/thebigbot:/tmp/.ICE-unix/2547
+SESSION_MANAGER = local/thebigbot:@/tmp/.ICE-unix/2504,unix/thebigbot:/tmp/.ICE-unix/2504
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
 PNPM_HOME = /home/valerio/.local/share/pnpm
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
 # environment
 XDG_MENU_PREFIX = gnome-
 # environment
@@ -93,13 +95,15 @@ VSCODE_LOG_STACK = true
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 40f13820b3fc4bf0b0687bea77e7a086
+INVOCATION_ID = 7a9509ee17e44d6f9e7e402a1b9eb88e
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
 XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
+# environment
+GIO_LAUNCHED_DESKTOP_FILE_PID = 39259
 # automatic
 %F = $(notdir $%)
 # environment
@@ -111,7 +115,7 @@ PWD = /home/valerio/Scrivania/miaofetch
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 2466
+SSH_AGENT_PID = 2464
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -121,8 +125,6 @@ VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 HOME = /home/valerio
 # environment
-VSCODE_CLI = 1
-# environment
 VSCODE_CODE_CACHE_PATH = /home/valerio/.config/Code - Insiders/CachedData/6428d0fc7dae5801cdaf2d160ac39a3dfc8f0c06
 # environment
 LOGNAME = valerio
@@ -131,8 +133,6 @@ APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 NVM_CD_FLAGS = 
 # environment
-ELECTRON_NO_ATTACH_CONSOLE = 1
-# environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # environment
 GNOME_DESKTOP_SESSION_ID = this-is-deprecated
@@ -140,8 +140,6 @@ GNOME_DESKTOP_SESSION_ID = this-is-deprecated
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
 MAKELEVEL := 0
-# environment
-COLORTERM = truecolor
 # default
 MAKE = $(MAKE_COMMAND)
 # default
@@ -149,7 +147,7 @@ MAKECMDGOALS := all
 # environment
 QT_IM_MODULE = ibus
 # environment
-SHLVL = 1
+SHLVL = 0
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # default
@@ -196,12 +194,8 @@ MAKEFILES :=
 LC_ALL = C
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
-# environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/b84585e3_0801_4844_9269_67c39f510bb9
 # automatic
 ^F = $(notdir $^)
-# environment
-GNOME_TERMINAL_SERVICE = :1.1374
 # default
 SUFFIXES := 
 # environment
@@ -217,13 +211,13 @@ GJS_DEBUG_OUTPUT = stderr
 # environment
 LANG = C
 # environment
-TERM = xterm-256color
+VSCODE_PID = 39259
 # environment
-VSCODE_PID = 30102
+STARSHIP_SHELL = bash
 # environment
 NVM_RC_VERSION = 
 # variable set hash-table stats:
-# Load=105/1024=10%, Rehash=0, Collisions=13/129=10%
+# Load=102/1024=10%, Rehash=0, Collisions=15/126=12%
 
 # Pattern-specific Variable Values
 
@@ -275,6 +269,6 @@ Makefile:
 # strcache performance: lookups = 18 / hit rate = 22%
 # hash-table stats:
 # Load=14/8192=0%, Rehash=0, Collisions=1/18=6%
-# Finished Make data base on Thu Jun  2 09:23:31 2022
+# Finished Make data base on Fri Jun  3 18:44:05 2022
 
  
