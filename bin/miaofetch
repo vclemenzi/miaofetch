@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 #By Thebigbot0000
 
-
 YELLOW='\033[1;33m'
 GREEN='\033[0;32m'
 RED='\033[0;31m'
@@ -16,13 +15,16 @@ os=$(lsb_release -si)
 release=$(lsb_release -sr)
 arch=$(uname -m)
 kernel=$(uname -r)
-uptime=$(uptime -p)
+uptimem=$(uptime -p | awk '{print $2}')
+uptimeh=$(uptime -p | awk '{print $4}')
 memory_total=$(free -m | awk '/^Mem:/{print $2}')
 memory_used=$(free -m | awk '/^Mem:/{print $3}')
-
+bashversion=$(bash --version | grep "bash" | cut -f 4 -d " " | cut -d "-" -f 1 | cut -d "(" -f 1)
+modelname=$(lscpu | grep "Model name" | cut -f 2 -d ":" | sed 's/^[ \t]*//')
+oshomepage=$(cat /etc/os-release | grep "HOME_URL" | cut -f 2 -d "=" | sed 's/^[ \t]*//')
 case "$1" in
 "-nc" | "--no-cat")
- echo -e "${YELLOW}${user}${RESET}@${YELLOW}${hostname}${RESET}
+    echo -e "${YELLOW}${user}${RESET}@${YELLOW}${hostname}${RESET}
 ${YELLOW}OS${RESET}: $os $release $arch
 ${YELLOW}Kernel${RESET}: $kernel
 ${YELLOW}Uptime${RESET}: $uptime
@@ -35,11 +37,13 @@ ${GREEN}████${RESET}${RED}████${RESET}${YELLOW}████${RES
 *)
     echo -e "
             ${YELLOW}${USER}${RESET}@${YELLOW}${hostname}${RESET}
-  ${YELLOW}\    /)${RESET}   ${BOLD}OS${RESET}: $os $release $arch
-   ${YELLOW})  ( ')${RESET}  ${BOLD}Kernel${RESET}: $kernel
-  ${YELLOW}(  /  )${RESET}   ${BOLD}Uptime${RESET}: $uptime
-   ${YELLOW}\(__)|${RESET}   ${BOLD}Memory${RESET}: $memory_used/$memory_total MB
-
+            ${BOLD}OS${RESET}: \e]8;;$oshomepage\a$os\e]8;;\a $release $arch
+  ${YELLOW}\    /)${RESET}   ${BOLD}Kernel${RESET}: $kernel
+   ${YELLOW})  ( ')${RESET}  ${BOLD}Uptime${RESET}: $uptimeh hours $uptimem minutes
+  ${YELLOW}(  /  )${RESET}   ${BOLD}Memory${RESET}: $memory_used/$memory_total MB
+   ${YELLOW}\(__)|${RESET}   ${BOLD}Bash${RESET}: $bashversion
+            ${BOLD}CPU${RESET}: $modelname
+         
             ${GREEN}████${RESET}${RED}████${RESET}${YELLOW}████${RESET}${BLUE}████${RESET}${GRAY}████${RESET}
 "
     exit 1
