@@ -22,15 +22,56 @@ memory_used=$(free -m | awk '/^Mem:/{print $3}')
 bashversion=$(bash --version | grep "bash" | cut -f 4 -d " " | cut -d "-" -f 1 | cut -d "(" -f 1)
 modelname=$(lscpu | grep "Model name" | cut -f 2 -d ":" | sed 's/^[ \t]*//')
 oshomepage=$(cat /etc/os-release | grep "HOME_URL" | cut -f 2 -d "=" -d "\"" | sed 's/^[ \t]*//')
+
 case "$1" in
 "-nc" | "--no-cat")
-    echo -e "${YELLOW}${user}${RESET}@${YELLOW}${hostname}${RESET}
-${YELLOW}OS${RESET}: $os $release $arch
-${YELLOW}Kernel${RESET}: $kernel
-${YELLOW}Uptime${RESET}: $uptime
-${YELLOW}Memory${RESET}: $memory_used/$memory_total MB
+    echo -e "
+${YELLOW}${USER}${RESET}@${YELLOW}${hostname}${RESET}
+${BOLD}OS${RESET}: \e]8;;$oshomepage\a$os\e]8;;\a $release $arch
+${BOLD}Kernel${RESET}: $kernel
+${BOLD}Uptime${RESET}: $uptimeh hours $uptimem minutes
+${BOLD}Memory${RESET}: $memory_used/$memory_total MB
+${BOLD}Bash${RESET}: $bashversion
+${BOLD}CPU${RESET}: $modelname
+         
+${GREEN}████${RESET}${RED}████${RESET}${YELLOW}████${RESET}${BLUE}████${RESET}${GRAY}████${RESET}
+"
+    exit 1
+    ;;
 
-${GREEN}████${RESET}${RED}████${RESET}${YELLOW}████${RESET}${BLUE}████${RESET}${GRAY}████${RESET}"
+"-o" | "--only")
+    P=$2
+    case "$P" in
+    "os")
+        echo -e "${BOLD}OS${RESET}: \e]8;;$oshomepage\a$os\e]8;;\a $release $arch"
+        exit 1
+        ;;
+    "kernel")
+        echo -e "${BOLD}Kernel${RESET}: $kernel"
+        exit 1
+        ;;
+    "uptime")
+        echo -e "${BOLD}Uptime${RESET}: $uptimeh hours $uptimem minutes"
+        exit 1
+        ;;
+    "memory")
+
+        echo -e "${BOLD}Memory${RESET}: $memory_used/$memory_total MB"
+        exit 1
+        ;;
+    "bash")
+        echo -e "${BOLD}Bash${RESET}: $bashversion"
+        exit 1
+        ;;
+    "cpu")
+
+        echo -e "${BOLD}CPU${RESET}: $modelname"
+        exit 1
+        ;;
+    *)
+        echo -e "Specify a valid option"
+        ;;
+    esac
     exit 1
     ;;
 
@@ -44,8 +85,7 @@ ${GREEN}████${RESET}${RED}████${RESET}${YELLOW}████${RES
    ${YELLOW}\(__)|${RESET}   ${BOLD}Bash${RESET}: $bashversion
             ${BOLD}CPU${RESET}: $modelname
          
-            ${GREEN}████${RESET}${RED}████${RESET}${YELLOW}████${RESET}${BLUE}████${RESET}${GRAY}████${RESET}
-"
+            ${GREEN}████${RESET}${RED}████${RESET}${YELLOW}████${RESET}${BLUE}████${RESET}${GRAY}████${RESET}"
     exit 1
     ;;
 esac
