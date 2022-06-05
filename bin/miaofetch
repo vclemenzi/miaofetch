@@ -21,7 +21,7 @@ memory_total=$(free -m | awk '/^Mem:/{print $2}')
 memory_used=$(free -m | awk '/^Mem:/{print $3}')
 bashversion=$(bash --version | grep "bash" | cut -f 4 -d " " | cut -d "-" -f 1 | cut -d "(" -f 1)
 modelname=$(lscpu | grep "Model name" | cut -f 2 -d ":" | sed 's/^[ \t]*//')
-oshomepage=$(cat /etc/os-release | grep "HOME_URL" | cut -f 2 -d "=" | sed 's/^[ \t]*//')
+oshomepage=$(cat /etc/os-release | grep "HOME_URL" | cut -f 2 -d "=" -d "\"" | sed 's/^[ \t]*//')
 case "$1" in
 "-nc" | "--no-cat")
     echo -e "${YELLOW}${user}${RESET}@${YELLOW}${hostname}${RESET}
