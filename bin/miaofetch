@@ -6,6 +6,7 @@ GREEN='\033[0;32m'
 RED='\033[0;31m'
 BLUE='\033[0;34m'
 GRAY='\033[1;30m'
+PINK='\033[35m'
 BOLD='\033[1m'
 RESET='\033[0m'
 
@@ -76,13 +77,32 @@ ${GREEN}████${RESET}${RED}████${RESET}${YELLOW}████${RES
     ;;
 
 *)
+    RANDOMC=$(shuf -i 1-6 -n 1)
+    case "$RANDOMC" in
+        1)
+	  COLOR=${RED}${BOLD}
+        ;;
+        2)
+	  COLOR=${YELLOW}${BOLD}
+	;;
+        3)
+          COLOR=${GREEN}${BOLD}
+	;;
+        4)
+          COLOR=${BLUE}${BOLD}
+	;;
+        5)
+          COLOR=${PINK}${BOLD}
+	;;
+    esac
+
     echo -e "
-            ${YELLOW}${USER}${RESET}@${YELLOW}${hostname}${RESET}
+            ${COLOR}${USER}${RESET}@${COLOR}${hostname}${RESET}
             ${BOLD}OS${RESET}: \e]8;;$oshomepage\a$os\e]8;;\a $release $arch
-  ${YELLOW}\    /)${RESET}   ${BOLD}Kernel${RESET}: $kernel
-   ${YELLOW})  ( ')${RESET}  ${BOLD}Uptime${RESET}: $uptimeh hours $uptimem minutes
-  ${YELLOW}(  /  )${RESET}   ${BOLD}Memory${RESET}: $memory_used/$memory_total MB
-   ${YELLOW}\(__)|${RESET}   ${BOLD}Bash${RESET}: $bashversion
+  ${COLOR}\    /)${RESET}   ${BOLD}Kernel${RESET}: $kernel
+   ${COLOR})  ( ')${RESET}  ${BOLD}Uptime${RESET}: $uptimeh hours $uptimem minutes
+  ${COLOR}(  /  )${RESET}   ${BOLD}Memory${RESET}: $memory_used/$memory_total MB
+   ${COLOR}\(__)|${RESET}   ${BOLD}Bash${RESET}: $bashversion
             ${BOLD}CPU${RESET}: $modelname
          
             ${GREEN}████${RESET}${RED}████${RESET}${YELLOW}████${RESET}${BLUE}████${RESET}${GRAY}████${RESET}"
