@@ -1,91 +1,92 @@
 #!/usr/bin/env bash
-#By Thebigbot0000
+#by thebigbot0000
 
-YELLOW='\033[1;33m'
-GREEN='\033[0;32m'
-RED='\033[0;31m'
-BLUE='\033[0;34m'
-GRAY='\033[1;30m'
-BOLD='\033[1m'
-RESET='\033[0m'
+yellow='\033[1;33m'
+green='\033[0;32m'
+red='\033[0;31m'
+blue='\033[0;34m'
+gray='\033[1;30m'
+bold='\033[1m'
+reset='\033[0m'
 
-hostname=$(hostname)
+hostname=$(hostnamectl | grep "static hostname" | awk '{print $3}')
 user=$(whoami)
-os=$(lsb_release -si)
+os=$(hostnamectl | grep "operating system" | awk '{print $3}')
 release=$(lsb_release -sr)
 arch=$(uname -m)
-kernel=$(uname -r)
+kernel=$(hostnamectl | grep "kernel" | awk '{print $3}')
 uptimem=$(uptime -p | awk '{print $2}')
 uptimeh=$(uptime -p | awk '{print $4}')
-memory_total=$(free -m | awk '/^Mem:/{print $2}')
-memory_used=$(free -m | awk '/^Mem:/{print $3}')
+memory_total=$(free -m | awk '/^mem:/{print $2}')
+memory_used=$(free -m | awk '/^mem:/{print $3}')
 bashversion=$(bash --version | grep "bash" | cut -f 4 -d " " | cut -d "-" -f 1 | cut -d "(" -f 1)
-modelname=$(lscpu | grep "Model name" | cut -f 2 -d ":" | sed 's/^[ \t]*//')
-oshomepage=$(cat /etc/os-release | grep "HOME_URL" | cut -f 2 -d "=" -d "\"" | sed 's/^[ \t]*//')
+modelname=$(lscpu | grep "model name" | cut -f 2 -d ":" | sed 's/^[ \t]*//')
+oshomepage=$(cat /etc/os-release | grep "home_url" | cut -f 2 -d "=" -d "\"" | sed 's/^[ \t]*//')
 
 case "$1" in
 "-nc" | "--no-cat")
     echo -e "
-${YELLOW}${USER}${RESET}@${YELLOW}${hostname}${RESET}
-${BOLD}OS${RESET}: \e]8;;$oshomepage\a$os\e]8;;\a $release $arch
-${BOLD}Kernel${RESET}: $kernel
-${BOLD}Uptime${RESET}: $uptimeh hours $uptimem minutes
-${BOLD}Memory${RESET}: $memory_used/$memory_total MB
-${BOLD}Bash${RESET}: $bashversion
-${BOLD}CPU${RESET}: $modelname
+${yellow}${user}${reset}@${yellow}${hostname}${reset}
+${bold}os${reset}: \e]8;;$oshomepage\a$os\e]8;;\a $release $arch
+${bold}kernel${reset}: $kernel
+${bold}uptime${reset}: $uptimeh hours $uptimem minutes
+${bold}memory${reset}: $memory_used/$memory_total mb
+${bold}bash${reset}: $bashversion
+${bold}cpu${reset}: $modelname
          
-${GREEN}████${RESET}${RED}████${RESET}${YELLOW}████${RESET}${BLUE}████${RESET}${GRAY}████${RESET}
+${green}████${reset}${red}████${reset}${yellow}████${reset}${blue}████${reset}${gray}████${reset}
 "
     exit 1
     ;;
 
 "-o" | "--only")
-    P=$2
-    case "$P" in
+    p=$2
+    case "$p" in
     "os")
-        echo -e "${BOLD}OS${RESET}: \e]8;;$oshomepage\a$os\e]8;;\a $release $arch"
+        echo -e "${bold}os${reset}: \e]8;;$oshomepage\a$os\e]8;;\a $release $arch"
         exit 1
         ;;
     "kernel")
-        echo -e "${BOLD}Kernel${RESET}: $kernel"
+        echo -e "${bold}kernel${reset}: $kernel"
         exit 1
         ;;
     "uptime")
-        echo -e "${BOLD}Uptime${RESET}: $uptimeh hours $uptimem minutes"
+        echo -e "${bold}uptime${reset}: $uptimeh hours $uptimem minutes"
         exit 1
         ;;
     "memory")
 
-        echo -e "${BOLD}Memory${RESET}: $memory_used/$memory_total MB"
+        echo -e "${bold}memory${reset}: $memory_used/$memory_total mb"
         exit 1
         ;;
     "bash")
-        echo -e "${BOLD}Bash${RESET}: $bashversion"
+        echo -e "${bold}bash${reset}: $bashversion"
         exit 1
         ;;
     "cpu")
 
-        echo -e "${BOLD}CPU${RESET}: $modelname"
+        echo -e "${bold}cpu${reset}: $modelname"
         exit 1
         ;;
     *)
-        echo -e "Specify a valid option"
+        echo -e "specify a valid option"
         ;;
     esac
     exit 1
     ;;
 
 *)
+    color=${yellow}
     echo -e "
-            ${YELLOW}${USER}${RESET}@${YELLOW}${hostname}${RESET}
-            ${BOLD}OS${RESET}: \e]8;;$oshomepage\a$os\e]8;;\a $release $arch
-  ${YELLOW}\    /)${RESET}   ${BOLD}Kernel${RESET}: $kernel
-   ${YELLOW})  ( ')${RESET}  ${BOLD}Uptime${RESET}: $uptimeh hours $uptimem minutes
-  ${YELLOW}(  /  )${RESET}   ${BOLD}Memory${RESET}: $memory_used/$memory_total MB
-   ${YELLOW}\(__)|${RESET}   ${BOLD}Bash${RESET}: $bashversion
-            ${BOLD}CPU${RESET}: $modelname
+            ${yellow}${user}${reset}@${yellow}${hostname}${reset}
+            ${bold}os${reset}: \e]8;;$oshomepage\a$os\e]8;;\a $release $arch
+  ${yellow}\    /)${reset}   ${bold}kernel${reset}: $kernel
+   ${yellow})  ( ')${reset}  ${bold}uptime${reset}: $uptimeh hours $uptimem minutes
+  ${yellow}(  /  )${reset}   ${bold}memory${reset}: $memory_used/$memory_total mb
+   ${yellow}\(__)|${reset}   ${bold}bash${reset}: $bashversion
+            ${bold}cpu${reset}: $modelname
          
-            ${GREEN}████${RESET}${RED}████${RESET}${YELLOW}████${RESET}${BLUE}████${RESET}${GRAY}████${RESET}"
+            ${green}████${reset}${red}████${reset}${yellow}████${reset}${blue}████${reset}${gray}████${reset}"
     exit 1
     ;;
 esac
