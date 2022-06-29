@@ -7,7 +7,7 @@ Fetch your system information, with a nice cat!
 1) Clone repository
 
 ```bash
-git clone https://github.com/Thebigbot0000/miaofetch.git && cd miaofetch
+git clone https://github.com/aThebigbot/miaofetch.git && cd miaofetch
 ```
 
 2) Start `install`
