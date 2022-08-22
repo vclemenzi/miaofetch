@@ -1,24 +1,29 @@
-## Miaofetch, Miao!
+<div align="center">
 
-Fetch your system information, with a nice cat! 
+## 🐱 `miaofetch`
 
-### Installation
+📎 Fetch your system information, with a cool cat
 
-1) Clone repository
+</div>
+
+
+### 📥 Installation
+
+1. Clone Repository
 
 ```bash
-git clone https://github.com/aThebigbot/miaofetch.git && cd miaofetch
+git clone https://github.com/aThebigbot/miaofetch.git
+cd miaofetch
 ```
 
-2) Start `install`
+2. Run the Installation Process
 
 ```bash
 sh install
 ```
 
-### How to use
-
+### 🥤 How To Use
+Now just run this in your terminal.
 ```bash
-# For run it, just write this in your console/terminal:
 miaofetch
 ```
