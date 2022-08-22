@@ -9,17 +9,8 @@
 
 ### 📥 Installation
 
-1. Clone Repository
-
 ```bash
-git clone https://github.com/aThebigbot/miaofetch.git
-cd miaofetch
-```
-
-2. Run the Installation Process
-
-```bash
-sh install
+curl https://raw.githubusercontent.com/aThebigbot/miaofetch/main/install | bash
 ```
 
 ### 🥤 How To Use
