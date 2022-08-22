@@ -4,16 +4,8 @@ Fetch your system information, with a nice cat!
 
 ### Installation
 
-1) Clone repository
-
 ```bash
-git clone https://github.com/aThebigbot/miaofetch.git && cd miaofetch
-```
-
-2) Start `install`
-
-```bash
-sh install
+curl https://raw.githubusercontent.com/aThebigbot/miaofetch/main/install | bash
 ```
 
 ### How to use
