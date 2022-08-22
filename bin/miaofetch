@@ -9,19 +9,26 @@ gray='\033[1;30m'
 bold='\033[1m'
 reset='\033[0m'
 
-hostname=$(hostnamectl | grep "static hostname" | awk '{print $3}')
+hostname=$(hostnamectl | grep "Static hostname" | awk '{print $3}')
 user=$(whoami)
-os=$(hostnamectl | grep "operating system" | awk '{print $3}')
+os=$(hostnamectl | grep "Operating System" | awk '{print $3}')
 release=$(lsb_release -sr)
 arch=$(uname -m)
-kernel=$(hostnamectl | grep "kernel" | awk '{print $3}')
+kernel=$(hostnamectl | grep "Kernel" | awk '{print $3}')
 uptimem=$(uptime -p | awk '{print $2}')
 uptimeh=$(uptime -p | awk '{print $4}')
-memory_total=$(free -m | awk '/^mem:/{print $2}')
-memory_used=$(free -m | awk '/^mem:/{print $3}')
+memory_total=$(free -m | awk '/^Mem:/{print $2}')
+memory_used=$(free -m | awk '/^Mem:/{print $3}')
 bashversion=$(bash --version | grep "bash" | cut -f 4 -d " " | cut -d "-" -f 1 | cut -d "(" -f 1)
-modelname=$(lscpu | grep "model name" | cut -f 2 -d ":" | sed 's/^[ \t]*//')
+modelname=$(lscpu | grep "Model name" | cut -f 2 -d ":" | sed 's/^[ \t]*//')
 oshomepage=$(cat /etc/os-release | grep "home_url" | cut -f 2 -d "=" -d "\"" | sed 's/^[ \t]*//')
+
+if [ uptimeh ]; then
+	uptimeh="${uptimeh} hours"
+else
+	uptimeh=""
+fi
+
 
 case "$1" in
 "-nc" | "--no-cat")
@@ -51,7 +58,7 @@ ${green}████${reset}${red}████${reset}${yellow}████${res
         exit 1
         ;;
     "uptime")
-        echo -e "${bold}uptime${reset}: $uptimeh hours $uptimem minutes"
+        echo -e "${bold}uptime${reset}: $uptimeh $uptimem minutes"
         exit 1
         ;;
     "memory")
@@ -81,7 +88,7 @@ ${green}████${reset}${red}████${reset}${yellow}████${res
             ${yellow}${user}${reset}@${yellow}${hostname}${reset}
             ${bold}os${reset}: \e]8;;$oshomepage\a$os\e]8;;\a $release $arch
   ${yellow}\    /)${reset}   ${bold}kernel${reset}: $kernel
-   ${yellow})  ( ')${reset}  ${bold}uptime${reset}: $uptimeh hours $uptimem minutes
+   ${yellow})  ( ')${reset}  ${bold}uptime${reset}: $uptimeh $uptimem minutes
   ${yellow}(  /  )${reset}   ${bold}memory${reset}: $memory_used/$memory_total mb
    ${yellow}\(__)|${reset}   ${bold}bash${reset}: $bashversion
             ${bold}cpu${reset}: $modelname
