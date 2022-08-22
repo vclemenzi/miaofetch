@@ -1,16 +1,23 @@
-## Miaofetch, Miao!
+<div align="center">
 
-Fetch your system information, with a nice cat! 
+## 🐱 `miaofetch`
 
-### Installation
+📎 Fetch your system information, with a cool cat
+
+</div>
+
+
+### 📥 Installation
 
 ```bash
 curl https://raw.githubusercontent.com/aThebigbot/miaofetch/main/install | bash
 ```
 
-### How to use
-
+### 🥤 How To Use
+Now just run this in your terminal.
 ```bash
-# For run it, just write this in your console/terminal:
 miaofetch
 ```
+
+### 🌸 Credits
+Co-authored-by aThebigbot <aThebigbot@users.noreply.github.com>
