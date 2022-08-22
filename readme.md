@@ -18,6 +18,3 @@ Now just run this in your terminal.
 ```bash
 miaofetch
 ```
-
-### 🌸 Credits
-Co-authored-by aThebigbot <aThebigbot@users.noreply.github.com>
