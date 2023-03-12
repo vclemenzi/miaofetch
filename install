@@ -11,8 +11,8 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
-content=$(curl https://raw.githubusercontent.com/aThebigbot/miaofetch/main/bin/miaofetch) # Get content
-echo -e "Fetched github repository ${YELLOW}aThebigbot/miaofetch${RESET}"
+content=$(curl https://raw.githubusercontent.com/vclemenzi/miaofetch/main/bin/miaofetch) # Get content
+echo -e "Fetched github repository ${YELLOW}vclemenzi/miaofetch${RESET}"
 
 touch /usr/bin/miaofetch # Create file
 echo -e "Created file ${YELLOW}miaofetch${RESET}"
