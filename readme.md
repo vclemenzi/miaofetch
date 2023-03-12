@@ -10,7 +10,7 @@
 ### 📥 Installation
 
 ```bash
-curl https://raw.githubusercontent.com/aThebigbot/miaofetch/main/install | bash
+curl https://raw.githubusercontent.com/vclemenzi/miaofetch/main/install | bash
 ```
 
 ### 🥤 How To Use
