@@ -24,7 +24,7 @@ modelname=$(lscpu | grep "Model name" | cut -f 2 -d ":" | sed 's/^[ \t]*//')
 oshomepage=$(cat /etc/os-release | grep "home_url" | cut -f 2 -d "=" -d "\"" | sed 's/^[ \t]*//')
 
 if [ uptimeh ]; then
-	uptimeh="${uptimeh} hours"
+	uptimeh="${uptimeh} hours "
 else
 	uptimeh=""
 fi
@@ -36,7 +36,7 @@ case "$1" in
 ${yellow}${user}${reset}@${yellow}${hostname}${reset}
 ${bold}os${reset}: \e]8;;$oshomepage\a$os\e]8;;\a $release $arch
 ${bold}kernel${reset}: $kernel
-${bold}uptime${reset}: $uptimeh hours $uptimem minutes
+${bold}uptime${reset}: ${uptimeh}${uptimem} minutes
 ${bold}memory${reset}: $memory_used/$memory_total mb
 ${bold}bash${reset}: $bashversion
 ${bold}cpu${reset}: $modelname
