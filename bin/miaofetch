@@ -12,7 +12,6 @@ reset='\033[0m'
 hostname=$(hostnamectl | grep "Static hostname" | awk '{print $3}')
 user=$(whoami)
 os=$(hostnamectl | grep "Operating System" | awk '{print $3}')
-release=$(lsb_release -sr)
 arch=$(uname -m)
 kernel=$(hostnamectl | grep "Kernel" | awk '{print $3}')
 uptimem=$(uptime -p | awk '{print $2}')
@@ -34,7 +33,7 @@ case "$1" in
 "-nc" | "--no-cat")
     echo -e "
 ${yellow}${user}${reset}@${yellow}${hostname}${reset}
-${bold}os${reset}: \e]8;;$oshomepage\a$os\e]8;;\a $release $arch
+${bold}os${reset}: \e]8;;$oshomepage\a$os\e]8;;\a $arch
 ${bold}kernel${reset}: $kernel
 ${bold}uptime${reset}: ${uptimeh}${uptimem} minutes
 ${bold}memory${reset}: $memory_used/$memory_total mb
